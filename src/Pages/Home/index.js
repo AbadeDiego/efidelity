@@ -102,13 +102,22 @@ export default function Home() {
           <Grid item>
             <Grid container spacing={3}>
               <Grid item>
-                <Button onClick={handleClickOpenNewPurchase} variant="outlined">
+                <Button
+                  onClick={() => {
+                    window.navigator.mediaDevices
+                      .getUserMedia({ video: true })
+                      .then(function (mediaStream) {
+                        const video = document.querySelector("#video");
+                        video.srcObject = mediaStream;
+                        video.play();
+                      })
+                      .catch(function (err) {
+                        console.log("Não há permissões para acessar a webcam");
+                      });
+                  }}
+                  variant="outlined"
+                >
                   Nova compra
-                </Button>
-              </Grid>
-              <Grid item>
-                <Button onClick={handleClickOpenNewCard} variant="contained">
-                  Novo cartão
                 </Button>
               </Grid>
             </Grid>
@@ -164,14 +173,14 @@ export default function Home() {
         <Grid container spacing={5} padding={5}>
           {cards.length > 0 &&
             cards.map((e) => (
-              <Grid item style={{ textAlign: 'center' }}>
+              <Grid item style={{ textAlign: "center" }}>
                 <CardMedia
                   component="img"
                   sx={{ width: 150, height: 150, borderRadius: "50%" }}
                   image="https://institucional.ifood.com.br/images/share.jpg"
                   alt="Live from space album cover"
                 />
-                <Typography  >{e.name}</Typography>
+                <Typography>{e.name}</Typography>
               </Grid>
             ))}
         </Grid>

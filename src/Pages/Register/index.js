@@ -202,17 +202,6 @@ export default function HorizontalNonLinearStepper() {
                   id="name"
                   label="Nome Completo"
                   name="name"
-                  autoComplete="name"
-                  autoFocus
-                />
-                <TextField
-                  margin="normal"
-                  fullWidth
-                  required
-                  id="email"
-                  label="Email"
-                  name="email"
-                  autoComplete="email"
                 />
                 <TextField
                   margin="normal"
@@ -222,7 +211,15 @@ export default function HorizontalNonLinearStepper() {
                   label="Senha"
                   type="password"
                   id="password"
-                  autoComplete="current-password"
+                />
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="confirmPassword"
+                  label="Confirmação de Senha"
+                  type="password"
+                  id="confirmPassword"
                 />
               </Box>
             ) : (
@@ -235,50 +232,44 @@ export default function HorizontalNonLinearStepper() {
                   margin="normal"
                   fullWidth
                   required
-                  id="name"
-                  label="Nome Completo"
-                  name="name"
-                  autoComplete="name"
-                  autoFocus
+                  id="email"
+                  label="Email"
+                  name="email"
                 />
                 <TextField
                   margin="normal"
                   fullWidth
                   required
                   id="email"
-                  label="Email"
+                  label="Confirmação de email"
                   name="email"
-                  autoComplete="email"
                 />
                 <TextField
                   margin="normal"
                   required
                   fullWidth
-                  name="password"
-                  label="Senha"
-                  type="password"
-                  id="password"
-                  autoComplete="current-password"
+                  name="phone"
+                  label="Celuar"
+                  type="number"
+                  id="phone"
                 />
                 <TextField
                   margin="normal"
                   required
                   fullWidth
-                  name="password"
-                  label="Senha"
-                  type="password"
-                  id="password"
-                  autoComplete="current-password"
+                  name="type"
+                  label="Tipo Jurídico"
+                  type="text"
+                  id="type"
                 />
                 <TextField
                   margin="normal"
                   required
                   fullWidth
-                  name="password"
-                  label="Senha"
-                  type="password"
-                  id="password"
-                  autoComplete="current-password"
+                  name="cep"
+                  label="CEP"
+                  type="text"
+                  id="cep"
                 />
                 <Grid container spacing={2}>
                   <Grid item xs={8}>
@@ -286,11 +277,10 @@ export default function HorizontalNonLinearStepper() {
                       margin="normal"
                       required
                       fullWidth
-                      name="password"
-                      label="Senha"
-                      type="password"
-                      id="password"
-                      autoComplete="current-password"
+                      name="street"
+                      label="Rua"
+                      type="text"
+                      id="street"
                     />
                   </Grid>
                   <Grid item xs={4}>
@@ -298,11 +288,10 @@ export default function HorizontalNonLinearStepper() {
                       margin="normal"
                       required
                       fullWidth
-                      name="password"
-                      label="Senha"
-                      type="password"
-                      id="password"
-                      autoComplete="current-password"
+                      name="number"
+                      label="Número"
+                      type="text"
+                      id="number"
                     />
                   </Grid>
                 </Grid>

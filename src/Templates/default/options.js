@@ -12,3 +12,23 @@ export const options = [
     name: "Fale conosco",
   },
 ];
+
+
+export const optionsEmp = [
+  {
+    path: "/dashboard",
+    name: "Dashboard",
+  },
+  {
+    path: "/vendas",
+    name: "Consulte Vendas",
+  },
+  {
+    path: "/profile",
+    name: "Seu Perfil",
+  },
+  {
+    path: "/promotion",
+    name: "Promoções",
+  },
+];

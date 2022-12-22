@@ -26,7 +26,7 @@ import Avatar from "@mui/material/Avatar";
 
 import Logo from "../../Assets/Efidelity.png";
 
-import { options } from "./options";
+import { options, optionsEmp } from "./options";
 import logout from "../../services/lib/logout";
 
 const drawerWidth = 300;
@@ -35,25 +35,32 @@ function ResponsiveDrawer(props) {
   const { window, children } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
+  
   const history = useHistory();
-
+  
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+  const optionsMenu = optionsEmp;
+
+  const sair = () => {
+    logout();
+    history.push("/login");
+  };
   const drawer = (
-    <div style={{ marginTop: '10%', marginBottom: 'auto' }}>
+    <div style={{ backgroundColor: "rgba(111, 127, 195, 1)", height: "100%" }}>
       <Toolbar>
         <Grid container display={"flex"} textAlign="center">
           <Grid item>
             <Typography
-              style={{ marginTop: 8, marginLeft: 13 }}
+              style={{ marginTop: "25%", marginLeft: 13, color: "#fff" }}
               variant="h6"
               gutterBottom
             >
               Bem vindo de volta!
             </Typography>
             <Typography
-              style={{ marginLeft: 5, marginTop: -15 }}
+              style={{ marginLeft: 5, marginTop: -5, color: "#fff" }}
               variant="h4"
               gutterBottom
               onClick={() => history.push("profile")}
@@ -63,27 +70,33 @@ function ResponsiveDrawer(props) {
           </Grid>
         </Grid>
       </Toolbar>
-      <List style={{ marginTop: '35%' }}>
-        {options.map((text, index) => (
+      <List style={{ marginTop: "35%" }}>
+        {optionsMenu.map((text, index) => (
           <ListItem
             onClick={() => history.push(text.path)}
             button
             key={text.name}
           >
-            <ListItemText primary={text.name} />
+            <ListItemText style={{ color: "#fff" }} primary={text.name} />
           </ListItem>
         ))}
       </List>
+      <Grid container justifyContent="flex-start" style={{ padding: 5 }}>
+        <Tooltip title={"Logout"}>
+          <IconButton onClick={sair}>
+            <LogoutIcon style={{ color: "#fff" }} />
+          </IconButton>
+        </Tooltip>
+      </Grid>
+      <img
+        src={Logo}
+        style={{ margin: 15, width: 120, height: 40, marginTop: "5%" }}
+      />
     </div>
   );
 
   const container =
     window !== undefined ? () => window().document.body : undefined;
-
-  const sair = () => {
-    logout();
-    history.push("/login");
-  };
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -92,7 +105,9 @@ function ResponsiveDrawer(props) {
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
-          height: 69,
+          height: 59,
+          background: "rgba(24, 23, 24, 1)",
+          display: { sm: "none" },
         }}
       >
         <Toolbar>
@@ -105,13 +120,6 @@ function ResponsiveDrawer(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Grid container justifyContent="flex-end">
-            <Tooltip title={"Logout"}>
-              <IconButton color="inherit" onClick={sair}>
-                <LogoutIcon />
-              </IconButton>
-            </Tooltip>
-          </Grid>
         </Toolbar>
       </AppBar>
       <Box
@@ -146,14 +154,10 @@ function ResponsiveDrawer(props) {
               boxSizing: "border-box",
               width: drawerWidth,
             },
-            
           }}
-
           open
         >
           {drawer}
-
-          <img src={Logo} style={{ margin: 15, width: 120, height: 40, marginTop: 'auto' }} />
         </Drawer>
       </Box>
       <Box

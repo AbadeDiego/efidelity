@@ -20,12 +20,13 @@ import logout from "../../services/lib/logout";
 
 import Header from "../../Components/Header";
 
-export default function LoginEnterpriseLogin() {
+export default function LoginEnterprise() {
   const history = useHistory();
 
   const [message, setMessage] = React.useState({});
   const [loading, setLoading] = React.useState(false);
 
+  const submit = (data) => {};
 
   useEffect(() => {
     logout();
@@ -45,7 +46,7 @@ export default function LoginEnterpriseLogin() {
         localStorage.setItem("user", res.data.user.name);
         localStorage.setItem("token", res.data.token);
 
-        history.push("/");
+        history.push("/dashboard");
 
         setLoading(false);
       })
@@ -58,7 +59,7 @@ export default function LoginEnterpriseLogin() {
   return (
     <>
       <Typography component="h1" variant="h5">
-        Login
+        Login Empresas
       </Typography>
       <Box component="form" onSubmit={(e) => handleSubmit(e)} sx={{ mt: 1 }}>
         <Notification message={message} />
